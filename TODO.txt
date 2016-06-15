@@ -1,0 +1,22 @@
+Bug fixes and code refactoring:
+
+-Use CSS to make table structure
+-Fix bug with html and body not taking up the entire page
+-Use code style:
+	html,css - https://htmlacademy.github.io/codeguide/
+	js - http://learn.javascript.ru/coding-style
+
+Server:
+
+-Create Node server and place it somewhere
+-Rewrite menu-items.js into menu-items.json and get json data from server
+-Do the same with map styles array
+-Download all images and get them with request to server (Or just continue to use Google fusion tables servers)
+-Use links to frameworks instead of sending a file (Application can not be used without internet connection anyway)
+
+Content and ideas:
+
+-Add content for other items in menu
+-Add tourist routes
+-Add stars and reviews (with server)
+-Add user guide and 'about' page

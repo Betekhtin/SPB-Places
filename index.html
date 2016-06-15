@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>SPB Places</title>
+
+    <!-- Styles -->
+    <link rel=stylesheet type="text/css" href="styles/style.css">
+    <link rel=stylesheet type="text/css" href="styles/map-menu.css">
+
+    <!-- Icon -->
+    <link rel=icon href="images/icon.png">
+
+    <!-- Dependencies -->
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js"></script>
+    <script type="text/javascript" src="frameworks/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="frameworks/angular.min.js"></script>
+    <script type="text/javascript" src="scripts/map.js"></script>
+    <script type="text/javascript" src="scripts/menu-items.js"></script>
+    <script type="text/javascript" src="scripts/mapMenuController.js"></script>
+
+    <!-- VK share button api -->
+    <script type="text/javascript" src="http://vk.com/js/api/share.js?93" charset="windows-1251"></script>
+
+  </head>
+  <body ng-app="SPB Places">
+
+    <!-- Header -->
+
+    <!-- Map -->
+    <main>
+      <!-- TODO: Use CSS to make table structure -->
+      <table id="content">
+        <tr>
+          <td id="nav_collumn">
+
+            <div id="logo">
+                <img src="images/logo.png" id="logo_img" class ="undraggable"></img>
+            </div>
+
+            <div class="unselectable" id='map_menu'>
+              <ul ng-controller="mapMenuController as menu">
+                <li ng-repeat="item in menu.items">
+                  <a>
+                    <span>{{item.name}}</span>
+                  </a>
+                  <ul>
+                    <li ng-repeat="subitem in item.subitems" ng-click="toggleMapLayer(subitem)" ng-class="{'span-checked':subitem.checked}">
+                      <a>
+                        <span ng-class="{'span-checked':subitem.checked}">
+                          {{subitem.name}}
+                        </span>
+                      </a>
+                      <ul ng-show="subitem.subsubitems.length">
+                        <li ng-repeat="subsubitem in subitem.subsubitems" ng-click="toggleMapLayer(subsubitem)">
+                          <a>
+                            <span ng-class="{'span-checked':subsubitem.checked}">
+                              {{subsubitem.name}}
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </div>
+              <!-- TODO: add more share buttons -->
+              <div id="share">
+                <script type="text/javascript"><!--
+document.write(VK.Share.button(false,{type: "custom", text: "<img src=\"images\\share\\vk.png\" width=\"32\" height=\"32\" />", eng: 1}));
+--></script>
+              </div>
+
+            </td>
+
+            <td id="map_collumn">
+              <div id="map">
+                <p>Loading... Please wait</p>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </main>
+
+    </body>
+  </html>
